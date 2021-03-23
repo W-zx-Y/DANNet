@@ -4,7 +4,7 @@ MODEL = 'PSPNet'  # PSPNet, DeepLab, RefineNet
 RESTORE_FROM = './pretrained_models/pretrain_pspnet_150000.pth'
 
 BATCH_SIZE = 2
-ITER_SIZE = 2
+ITER_SIZE = 1
 NUM_WORKERS = 2
 
 SET = 'train'
