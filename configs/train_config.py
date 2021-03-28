@@ -27,7 +27,7 @@ LEARNING_RATE_D = 1e-4
 NUM_STEPS = 50000
 SAVE_PRED_EVERY = 5000
 SNAPSHOT_DIR = './snapshots/'+MODEL
-STD = 0.1
+STD = 0.05
 
 
 def get_arguments():
