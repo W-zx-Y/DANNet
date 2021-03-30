@@ -173,11 +173,17 @@ def main():
             else:
                 _, pred_target_n = model(enhanced_images_n)
             pred_target_n = interp_target(pred_target_n)
+            
+            psudo_prob = torch.zeros_like(pred_target_d)
+            threshold = torch.ones_like(pred_target_d[:,:11,:,:])*0.2
+            threshold[pred_target_d[:,:11,:,:]>0.4] = 0.8
+            psudo_prob[:,:11,:,:] = threshold*pred_target_d[:,:11,:,:].detach() + (1-threshold)*pred_target_n[:,:11,:,:].detach()
+            psudo_prob[:,11:,:,:] = pred_target_n[:,11:,:,:].detach()
 
-            weights_prob = weights.expand(pred_target_d.size()[0], pred_target_d.size()[3], pred_target_d.size()[2], 19)
+            weights_prob = weights.expand(psudo_prob.size()[0], psudo_prob.size()[3], psudo_prob.size()[2], 19)
             weights_prob = weights_prob.transpose(1, 3)
-            pred_target_d = pred_target_d*weights_prob
-            psudo_gt = torch.argmax(pred_target_d.detach(), dim=1)
+            psudo_prob = psudo_prob*weights_prob
+            psudo_gt = torch.argmax(psudo_prob.detach(), dim=1)
             psudo_gt[psudo_gt >= 11] = 255
 
             D_out_n_19 = model_D2(F.softmax(pred_target_n, dim=1))
