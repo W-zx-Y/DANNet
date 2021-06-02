@@ -13,7 +13,7 @@ def one_hot(index, classes):
 
 
 class StaticLoss(nn.Module):
-    def __init__(self, num_classes=19, gamma=0, eps=1e-7, size_average=True, one_hot=True, ignore=255, weight=None):
+    def __init__(self, num_classes=19, gamma=1.0, eps=1e-7, size_average=True, one_hot=True, ignore=255, weight=None):
         super(StaticLoss, self).__init__()
         self.gamma = gamma
         self.eps = eps
