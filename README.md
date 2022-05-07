@@ -42,6 +42,14 @@ booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVP
 month = {June},
 year = {2021}
 }
+@article{wu2021one,
+title={A One-Stage Domain Adaptation Network with Image Alignment for Unsupervised Nighttime Semantic Segmentation},
+author={Wu, Xinyi and Wu, Zhenyao and Ju, Lili and Wang, Song},
+journal={IEEE Transactions on Pattern Analysis \& Machine Intelligence},
+number={01},
+pages={1--1},
+year={2021}
+}
 ```
 ### Contact
 * Xinyi Wu (xinyiw@email.sc.edu)
